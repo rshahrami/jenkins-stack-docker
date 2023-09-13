@@ -1,2 +1,5 @@
 **
 !ansible.yaml
+!kubectl
+!docker-ce-cli*
+!terraform*

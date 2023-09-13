@@ -2,7 +2,7 @@ version: !!str 3
 
 services:
   jenkins:
-    image: ssbostan/jenkins:lts-slim
+    image: ${JENKINS}
     restart: unless-stopped
     environment:
       - "DOCKER_HOST=tcp://docker:2376"
@@ -22,7 +22,7 @@ services:
       - "app.dws.created-by=ssbostan"
 
   registry:
-    image: registry:2
+    image: ${REGISTRY}
     restart: unless-stopped
     environment:
       - "REGISTRY_FIELDS_ENVIRONMENT=production"
@@ -41,7 +41,7 @@ services:
       - "app.dws.created-by=ssbostan"
 
   docker:
-    image: docker:dind
+    image: ${DOCKER}
     restart: unless-stopped
     privileged: true
     command: ["--insecure-registry", "$JENKINS_DOCKER_REGISTRY_IP"]
@@ -59,7 +59,7 @@ services:
       - "app.dws.created-by=ssbostan"
 
   gitea:
-    image: gitea/gitea:1.14
+    image: ${GITEA}
     restart: unless-stopped
     environment:
       - "TZ=Asia/Tehran"

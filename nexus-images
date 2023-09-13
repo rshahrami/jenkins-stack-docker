@@ -1,0 +1,28 @@
+#!/bin/bash
+
+NEXUS_REPO=192.168.143.34:8083/
+
+input=.env
+
+while read line
+do
+    IFS='='
+    read -ra str <<< $line
+
+    if [ "${str[1]}" != "$NEXUS_REPO" ] | [ "${str[1]}" != "$NEXUS_REPO" ] 
+    then
+        IFS='/'
+        read -ra strimage <<< ${str[1]}
+        unset strimage[0]
+        echo "pulling image : ${strimage[*]}"
+
+        imageTage="${strimage[*]}"
+        repo=$NEXUS_REPO"${str[1]}"
+
+        docker pull $imageTage
+        docker tag $imageTage $repo
+        docker push $repo
+    fi
+done < $input
+
+

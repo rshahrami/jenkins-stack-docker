@@ -22,3 +22,11 @@ The stack is tested on Docker 2.10 and Docker-compose 1.26, should works on earl
 ```
 
 ![demo](https://raw.githubusercontent.com/ssbostan/jenkins-stack-docker/master/demo.gif)
+
+
+
+
+wget https://download.docker.com/linux/debian/dists/bullseye/pool/stable/arm64/docker-ce-cli_24.0.4-1~debian.11~bullseye_arm64.deb
+
+
+wget https://releases.hashicorp.com/terraform/1.5.2/terraform_1.5.2_linux_amd64.zip
